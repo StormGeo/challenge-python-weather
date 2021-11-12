@@ -26,8 +26,9 @@ Good knowledge in:
 
 ### The challenge
 
-- Read two NetCDF files with temperature data: one with *predicted data* and
-  the other with *observed data*.
+- Read two HDF5 files with temperature data: one with *predicted data* and the
+  other with *observed data*. Note: observation station locations can be found
+  in the JSON metadata file.
 - Calculate the RMSE index for each 6-hour interval in the time-series at all
   points in the matrix.
 
@@ -35,21 +36,49 @@ Good knowledge in:
 
 - Plot two-dimensional maps of the index for each period and a graph of the
   time-series of the same index for Bergen (Latitude **60.39299** and Longitude
-  **5.32415**, corresponding to point Y: **TODO** and X: **TODO** in the data matrix
-  grid).
+  **5.32415**).
 - Create a `PROJECT.md` file with descriptions of all the steps to install and
   use your software.
 - Write the index calculation result in a NetCDF file (**Optional**).
 
+**Description of datasets:**
+
+Forecast Data
+
+| Property | Description |
+| :-------------------------------- |:-------------|
+| Archive | forecast.hdf5 |
+| Number of timesteps | 73 |
+| Reference date | 2021-11-01 |
+| Timestep Frequency | Hour |
+| Temperature Variable Name | temperature |
+| Temperature unit | Celsius degree |
+
+Observed Data
+
+| Property | Description |
+| :-------------------------------- |:---------------|
+| Archive | observations.hdf5 |
+| Number of timesteps | 73 |
+| Reference date | 2021-11-01 |
+| Timestep Frequency | Hour |
+| Temperature Variable Name | temperature |
+| Temperature unit | Celsius degree |
+
+Observation Metadata
+
+```json
+{"<station id>": {"lon": "<station lon>", "lat": "<station lat>", "station_name": "<station name>"}}
+```
 
 ### Evaluation
 
-What will we evaluate:
+What we will evaluate:
 
 - Performance
 - Maintainability
 - Organization
-- Good habits
+- Best practices
 
 
 ### Steps
@@ -65,7 +94,7 @@ To complete the challenge, follow the following steps:
 
 <img src="https://imgur.com/d9hBflb.png" alt="Import private repository" />
 
-2. Create branch where you implement your solution. Include a `PROJECT.md`
+2. Create a branch where you implement your solution. Include a `PROJECT.md`
    with an explanation of how we should run the project and with as much detail
    as possible about what was done.
 
